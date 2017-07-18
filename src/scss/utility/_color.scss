@@ -1,0 +1,32 @@
+@each $color-base-name, $color in $colors {
+  $color-base-code: map-get($color, base);
+
+  #{el(color-#{$color-base-name})}{
+    background-color: $color-base-code !important;
+  }
+  #{el(color-#{$color-base-name}-text)}{
+    color: $color-base-code !important;
+  }
+
+  @if map-has-key($color, lighten) {
+    @each $color-sub-name, $color-sub-code in map-get($color, lighten) {
+
+      @include color($color-sub-code, $color-base-name, $color-sub-name, 'lighten');
+
+    }
+  }
+  @if map-has-key($color, darken) {
+    @each $color-sub-name, $color-sub-code in map-get($color, darken) {
+
+      @include color($color-sub-code, $color-base-name, $color-sub-name, 'darken');
+
+    }
+  }
+  @if map-has-key($color, accent) {
+    @each $color-sub-name, $color-sub-code in map-get($color, accent) {
+
+      @include color($color-sub-code, $color-base-name, $color-sub-name, 'accent');
+
+    }
+  }
+}

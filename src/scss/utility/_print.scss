@@ -1,0 +1,14 @@
+@media only print {
+  #{el(print-hidden)} {
+    display: none !important;
+  }
+  #{el(print-block)} {
+    display: block !important;
+  }
+  #{el(print-inline)} {
+    display: inline !important;
+  }
+  #{el(print-inline-block)} {
+    display: inline-block !important;
+  }
+}

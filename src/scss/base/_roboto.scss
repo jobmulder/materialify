@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Thin), url('#{$path-roboto-font}Roboto-Thin.eot');
+  src: url("#{$path-roboto-font}Roboto-Thin.eot?#iefix") format('embedded-opentype'),
+  url("#{$path-roboto-font}Roboto-Thin.woff2") format("woff2"),
+  url("#{$path-roboto-font}Roboto-Thin.woff") format("woff"),
+  url("#{$path-roboto-font}Roboto-Thin.ttf") format("truetype");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Light), url('#{$path-roboto-font}Roboto-Light.eot');
+  src: url("#{$path-roboto-font}Roboto-Light.eot?#iefix") format('embedded-opentype'),
+  url("#{$path-roboto-font}Roboto-Light.woff2") format("woff2"),
+  url("#{$path-roboto-font}Roboto-Light.woff") format("woff"),
+  url("#{$path-roboto-font}Roboto-Light.ttf") format("truetype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Regular), url('#{$path-roboto-font}Roboto-Regular.eot');
+  src: url("#{$path-roboto-font}Roboto-Regular.eot?#iefix") format('embedded-opentype'),
+  url("#{$path-roboto-font}Roboto-Regular.woff2") format("woff2"),
+  url("#{$path-roboto-font}Roboto-Regular.woff") format("woff"),
+  url("#{$path-roboto-font}Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url('#{$path-roboto-font}Roboto-Medium.eot');
+  src: url("#{$path-roboto-font}Roboto-Medium.eot?#iefix") format('embedded-opentype'),
+  url("#{$path-roboto-font}Roboto-Medium.woff2") format("woff2"),
+  url("#{$path-roboto-font}Roboto-Medium.woff") format("woff"),
+  url("#{$path-roboto-font}Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url('#{$path-roboto-font}Roboto-Bold.eot');
+  src: url("#{$path-roboto-font}Roboto-Bold.eot?#iefix") format('embedded-opentype'),
+  url("#{$path-roboto-font}Roboto-Bold.woff2") format("woff2"),
+  url("#{$path-roboto-font}Roboto-Bold.woff") format("woff"),
+  url("#{$path-roboto-font}Roboto-Bold.ttf") format("truetype");
+  font-weight: 700;
+}

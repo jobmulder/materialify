@@ -1,0 +1,8 @@
+#{el(figure)}{
+  margin: 0 0 $spacing * .5 0;
+  display: inline-block;
+
+  @at-root #{el(caption)}{
+    color: $text-color-light;
+  }
+}

@@ -1,0 +1,40 @@
+// Set container sizes for each screen size
+@media #{$query-xs-up} {
+  #{el(container)}{
+    width: 100%;
+  }
+}
+@media #{$query-s-up} {
+  #{el(container)}{
+    max-width: 95%;
+  }
+}
+@media #{$query-m-up} {
+  #{el(container)}{
+    max-width: 90%;
+  }
+}
+@media #{$query-l-up} {
+  #{el(container)}{
+    max-width: 85%;
+  }
+}
+@media #{$query-xl-up} {
+  #{el(container)}{
+    max-width: 80%;
+  }
+}
+
+#{el(container)}{
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $row-gutter-size;
+  padding-right: $row-gutter-size;
+  box-sizing: border-box;
+  width: 100%;
+
+  // Set container full with for all screen sizes
+  @at-root #{mod(full)}{
+    max-width: 100%;
+  }
+}

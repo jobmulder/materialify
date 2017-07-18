@@ -1,0 +1,64 @@
+// Prefix the given class name
+@function el($el) {
+  $selector: "";
+
+  // If there is no parent element: show default name with framework prefix
+  // Prefix can be empty
+  @if & == null {
+    $selector: ".#{$fwp}#{$el}";
+  } @else {
+
+    // If BEM is enabled: prefix parent class name and __
+    // If BEM is not enable: prefix parent class name and -
+    // Prefix can be empty
+    @if $is-bem == true {
+      $selector: "#{&}__#{$el}";
+    } @else {
+      $selector: "#{&}-#{$el}";
+    }
+
+  }
+
+  @return $selector;
+}
+
+
+// Add a modifier to the given classname
+@function el-w-mod($el, $modifier) {
+  $selector: "";
+
+  // If BEM is enabled: prefix current class name and --
+  // If BEM is not enable: prefix current class name and framework prefix
+  // Prefix can be empty
+  @if $is-bem == true {
+    $selector: "#{el($el)}--#{$modifier}";
+  } @else {
+    $selector: "#{el($el)}-#{$modifier}";
+  }
+
+  @return $selector;
+}
+
+
+// Prefix the given modifier name
+@function mod($modifier) {
+  $selector: "";
+
+  // If BEM is enabled: prefix current class name and --
+  // If BEM is not enable: prefix current class name and framework prefix
+  // Prefix can be empty
+  @if $is-bem == true {
+    $selector: "#{&}--#{$modifier}";
+  } @else {
+    $selector: "#{&}-#{$modifier}";
+  }
+
+  @return #{$selector};
+}
+
+// Add a pseudo selector to a class name
+@function pseudo($pseudo) {
+  $selector: "#{&}::#{$pseudo}";
+
+  @return #{$selector};
+}

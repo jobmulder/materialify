@@ -1,0 +1,31 @@
+#{el(row)}{
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -$row-gutter-size;
+  margin-right: -$row-gutter-size;
+
+  @at-root #{mod(top-v)}{
+    align-items: flex-start;
+  }
+  @at-root #{mod(center-v)}{
+    align-items: center;
+  }
+  @at-root #{mod(bottom-v)}{
+    align-items: flex-end;
+  }
+  @at-root #{mod(left-h)}{
+    justify-content: flex-start;
+  }
+  @at-root #{mod(center-h)}{
+    justify-content: center;
+  }
+  @at-root #{mod(right-h)}{
+    justify-content: flex-end;
+  }
+  @at-root #{mod(around-h)}{
+    justify-content: space-around;
+  }
+  @at-root #{mod(between-h)}{
+    justify-content: space-between;
+  }
+}

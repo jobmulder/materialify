@@ -1,0 +1,28 @@
+@each $media-option-name, $media-option in $media-options {
+
+  @if $media-option-name == "xs" {
+
+    #{el(hidden)} {
+      display: none !important;
+    }
+
+  } @else {
+
+    @media #{map-get($media-option, "query-up")} {
+
+      #{el(hidden-#{$media-option-name}-up)} {
+        display: none !important;
+      }
+
+    }
+    @media #{map-get($media-option, "query-down")} {
+
+      #{el(hidden-#{$media-option-name}-down)} {
+        display: none !important;
+      }
+
+    }
+
+  }
+
+}

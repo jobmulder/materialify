@@ -1,0 +1,70 @@
+#{el(fab)}{
+  position: fixed;
+  padding: $spacing;
+  bottom: $spacing * 2;
+  right: $spacing * 2;
+
+  z-index: 600;
+  
+  @media #{map-deep-get($media-options, "s", "query-down")} {
+    bottom: $spacing;
+    right: $spacing;
+  }
+
+  @at-root #{el(list)}{
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 0;
+    height: 0;
+    margin: 0;
+  }
+  @at-root #{el(item)}{
+    margin-bottom: $spacing * .5;
+  }
+  @at-root #{el(btn-main)}{
+    transition: box-shadow $transition-time * .5;
+    animation: grow $transition-time * .75;
+
+    &:hover,
+    &:focus{
+      box-shadow: $shadow-s;
+    }
+    & > .material-icons{
+      animation: rotate-90-l-t-r $transition-time * .75;
+    }
+  }
+
+  // Active
+  @at-root #{mod(active)} #{el(list)},
+  #{mod(closing)} #{el(list)}{
+    visibility: visible;
+    width: auto;
+    height: auto;
+  }
+  // Opening animation
+  @at-root #{mod(active)} #{el(item)}{
+    animation: grow $transition-time * .5;
+  }
+  // Closing animation
+  @at-root #{mod(closing)} #{el(item)}{
+    animation: shrink $transition-time * .5;
+  }
+
+  // Horizontal
+  @at-root #{mod(horizontal)}{
+    display: flex;
+    flex-direction: row;
+  }
+  @at-root #{mod(horizontal)} #{el(list)}{
+    flex-direction: row;
+  }
+  @at-root #{mod(horizontal)} #{el(item)}{
+    margin-bottom: 0;
+    margin-right: $spacing * .5;
+    line-height: 1;
+  }
+
+}

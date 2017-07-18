@@ -1,0 +1,10 @@
+@mixin color($color-code, $color-base-name, $color-sub-name, $color-type) {
+
+  #{el(color-#{$color-base-name}-#{$color-type}-#{$color-sub-name})}{
+    background-color: $color-code !important;
+  }
+  #{el(color-#{$color-base-name}-#{$color-type}-#{$color-sub-name}-text)}{
+    color: $color-code !important;
+  }
+
+}

@@ -1,0 +1,47 @@
+{
+  "name": "materialify",
+  "version": "0.0.1",
+  "description": "Materialify CSS framework, based on Material Design from Google",
+  "scripts": {},
+  "keywords": [
+    "materialify",
+    "material",
+    "design",
+    "css",
+    "js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jobmulder/materialify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jobmulder/materialify/issues"
+  },
+  "homepage": "https://github.com/jobmulder/materialify",
+  "author": "Job Mulder",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "babelify": "^7.3.0",
+    "eslintify": "^3.1.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^3.5.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-minify": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sequence": "^0.4.6",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^4.3.11",
+    "rimraf": "^2.6.1",
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0"
+  }
+}

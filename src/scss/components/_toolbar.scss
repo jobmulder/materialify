@@ -1,0 +1,35 @@
+#{el(toolbar)}{
+  display: flex;
+  justify-content: space-between;
+  background: map-deep-get($colors, primary, base);
+  height: $spacing * 4;
+
+  @at-root #{el(primary)}{
+  }
+  @at-root #{el(actions)}{
+  }
+
+  @at-root #{el(list)}{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+  }
+  @at-root #{el(item)}{
+    margin: auto $spacing * .5;
+  }
+  @at-root #{el(link)}{
+    display: block;
+    padding: $spacing * .5;
+
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-transform: none;
+    color: map-deep-get($colors, light, base);
+  }
+
+  // Mix dropdown
+  @at-root #{el(dropdown)}{
+    display: block;
+  }
+}

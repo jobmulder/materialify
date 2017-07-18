@@ -1,0 +1,180 @@
+html{
+  line-height: 1.5;
+  font-size: 14px;
+
+  @if $text-repsonsive {
+    @media #{$query-xs-up} {
+      font-size: 12.5px;
+    }
+    @media #{$query-s-up} {
+      font-size: 13px;
+    }
+    @media #{$query-m-up} {
+      font-size: 13.5px;
+    }
+    @media #{$query-l-up} {
+      font-size: 14px;
+    }
+    @media #{$query-xl-up} {
+      font-size: 14.5px;
+    }
+  }
+
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  color: $text-color;
+}
+
+a {
+  text-decoration: none;
+  touch-action: manipulation;
+  color: map-deep-get($colors, primary, base);
+}
+
+
+// Header Styles
+h1, #{el(h1)},
+h2, #{el(h2)},
+h3, #{el(h3)},
+h4, #{el(h4)},
+h5, #{el(h5)},
+h6, #{el(h6)} {
+	font-weight: normal;
+	line-height: 1.1;
+
+  a{
+    font-weight: inherit;
+  }
+}
+h1, #{el(h1)} {
+  font-size: $h1-font-size;
+  margin: ($h1-font-size / 2) 0 ($h1-font-size / 2.5) 0;
+}
+h2, #{el(h2)} {
+  font-size: $h2-font-size;
+  margin: ($h2-font-size / 2) 0 ($h2-font-size / 2.5) 0;
+}
+h3, #{el(h3)} {
+  font-size: $h3-font-size;
+  margin: ($h3-font-size / 2) 0 ($h3-font-size / 2.5) 0;
+}
+h4, #{el(h4)} {
+  font-size: $h4-font-size;
+  margin: ($h4-font-size / 2) 0 ($h4-font-size / 2.5) 0;
+}
+h5, #{el(h5)} {
+  font-size: $h5-font-size;
+  margin: ($h5-font-size / 2) 0 ($h5-font-size / 2.5) 0;
+}
+h6, #{el(h6)} {
+  font-size: $h6-font-size;
+  margin: ($h6-font-size / 2) 0 ($h6-font-size / 2.5) 0;
+}
+
+// Text Styles
+p {
+  margin: 0 0 $spacing 0;
+}
+strong, b {
+  font-weight: bold;
+}
+em, cite, var, dfn {
+  font-style: italic;
+}
+small {
+  font-size: .75em;
+}
+mark, #{el(text-mark)}{
+  background-color: map-deep-get($colors, secondary, base);
+  padding: $spacing * .2;
+  border-radius: $border-radius;
+}
+abbr, abbr[title]{
+  text-decoration: none;
+  border-bottom: $border-size dotted;
+  cursor: help;
+}
+del{
+  text-decoration: line-through;
+}
+u, ins{
+  text-decoration: underline;
+}
+dl{
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 0;
+  margin-bottom: $spacing * .5;
+
+  dt{
+    flex-basis: 25%;
+    font-weight: bold;
+  }
+  dd{
+    flex-basis: 75%;
+    margin-bottom: $spacing * .5;
+    margin-left: 0;
+  }
+}
+%special-text-bg {
+  background-color: map-deep-get($colors, "grey", "lighten", "3");
+  padding: $spacing * .2;
+  border-radius: $border-radius;
+}
+kbd{
+  @extend %special-text-bg;
+
+  kbd{
+    padding: 0
+  }
+}
+code{
+  @extend %special-text-bg;
+  color: map-deep-get($colors, "blue", "darken", "3");
+  font-weight: 400;
+}
+
+%quote{
+  margin: 0 0 $spacing 0;
+  padding: $spacing * .5 $spacing;
+  border-left: $spacing * .25 solid map-deep-get($colors, primary, base);
+}
+#{el(quote)} {
+  @extend %quote;
+
+  @at-root #{mod(reverse)} {
+    text-align: right;
+    border-right: $spacing * .25 solid map-deep-get($colors, primary, base);
+    border-left: 0;
+  }
+  @at-root #{mod(reverse)} #{el(footer)} {
+    text-align: left;
+  }
+  @at-root #{el(quote)} {
+    margin: 0 0 $spacing * .25 0;
+  }
+  @at-root #{el(footer)} {
+    color: map-deep-get($colors, "grey", "darken", "1");
+    text-align: right;
+  }
+  @at-root #{el(author)} {
+    font-weight: bold;
+  }
+  @at-root #{el(date)} {
+
+  }
+}
+#{el(quote-short)}{
+  @extend %quote;
+  display: inline-block;
+
+  &::before,
+  &::after{
+    content: none;
+  }
+  @at-root #{mod(reverse)} {
+    text-align: right;
+    border-right: $spacing * .25 solid map-deep-get($colors, primary, base);
+    border-left: 0;
+  }
+}

@@ -1,0 +1,72 @@
+#{el(card)}{
+  position: relative;
+  overflow: hidden;
+  margin: $spacing 0;
+  border-radius: $border-radius;
+  box-shadow: $shadow-s;
+
+  // Default card
+  @at-root #{el(img-container)}{
+    position: relative;
+  }
+  @at-root #{el(img)}{
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+  @at-root #{el(body)}{
+    width: 100%;
+    padding: $spacing;
+    box-sizing: border-box;
+  }
+
+  // Footer
+  @at-root #{el(footer)}{
+    width: 100%;
+    padding: $spacing;
+    box-sizing: border-box;
+    background-color: map-deep-get($colors, light, base);
+    border-top: $border;
+
+    @at-root #{mod(sticky)}{
+      position: relative;
+      z-index: 5;
+    }
+  }
+
+  // Add this class around the footer and body when the image is displayed left or right and a footer is needed
+  @at-root #{el(h-footer)}{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    background-color: map-deep-get($colors, light, base);
+  }
+
+  @at-root #{el(btn-show)},
+  #{el(btn-hide)}{
+    float: right;
+    cursor: pointer;
+  }
+
+  // Content that is shown on reveal
+  @at-root #{el(reveal)}{
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+    padding: $spacing;
+    box-sizing: border-box;
+    background-color: map-deep-get($colors, light, base);
+    overflow-y: auto;
+
+    transition: top $transition-time * .2;
+    animation-timing-function: ease-out;
+    top: 100%;
+  }
+
+  // Show content
+  @at-root #{mod(active)} #{el(reveal)}{
+    top: 0;
+  }
+}

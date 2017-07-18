@@ -1,0 +1,58 @@
+#{el(collapsible)}{
+  box-shadow: 0 4px 5px 0 #{transparentize($shadow-color, .86)}, 0 1px 4px 0 #{transparentize($shadow-color, .88)}, 0 2px 4px -1px #{transparentize($shadow-color, .7)};
+
+
+  @at-root #{el(item)}{
+    position: relative;
+
+    background-color: map-deep-get($colors, light, base);
+
+    &:nth-child(1n + 2){
+      border-top: $border;
+    }
+  }
+  @at-root #{el(title)}{
+    padding: $spacing * .75 $spacing * 1.5;
+
+    cursor: pointer;
+  }
+  @at-root #{el(body)}{
+    display: none;
+    padding: $spacing * 1.5;
+
+    border-top: $border;
+  }
+  @at-root #{el-w-mod(item, active)} > #{el(body)}{
+    display: block;
+  }
+
+  // Modifiers
+  @at-root #{mod(dense)} #{el(title)}{
+    padding: $spacing * .5 $spacing * .75;
+  }
+  @at-root #{mod(dense)} #{el(body)}{
+    padding: $spacing * .75;
+  }
+  @at-root #{mod(offset)}{
+    box-shadow: none;
+  }
+  @at-root #{mod(offset)} #{el(item)}{
+    margin: 0rem $spacing;
+
+    box-shadow: 0 4px 5px 0 #{transparentize($shadow-color, .86)}, 0 1px 4px 0 #{transparentize($shadow-color, .88)}, 0 2px 4px -1px #{transparentize($shadow-color, .7)};
+
+    transition: margin $transition-time * .5, box-shadow $transition-time * .5;
+  }
+  @at-root #{mod(offset)} #{el-w-mod(item, active)}{
+    margin: $spacing * 1.5 0rem;
+
+    border-top: none;
+    box-shadow: $shadow-s;
+  }
+
+  // TODO: search for a better more bem like solution
+  @at-root #{mod(offset)} #{el-w-mod(item, active)} + #{el(item)}{
+    border-top: none;
+  }
+
+}

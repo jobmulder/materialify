@@ -1,0 +1,74 @@
+#{el(drawer)}{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: $drawer-width;
+  overflow-y: auto;
+
+  background-color: map-deep-get($colors, light, base);
+
+  @at-root #{el(actions)}{
+  }
+  @at-root #{el(list)}{
+    margin: $spacing 0;
+  }
+  @at-root #{el(item)}{
+  }
+  @at-root #{el(divider)}{
+    border-top: $border;
+  }
+  @at-root #{el(link)}{
+    display: block;
+    padding: $spacing * .5 $spacing * .5 $spacing * .5 $spacing * 1.5;
+
+    font-weight: 500;
+    text-transform: none;
+    text-align: left;
+    color: $text-color;
+
+    cursor: pointer;
+
+    &:hover{
+      background-color: map-deep-get($colors, "grey", "lighten", "3");
+    }
+  }
+  @at-root #{el(icon)}{
+    padding-right: $spacing;
+  }
+  @at-root #{el-w-mod(item, active)} #{el(link)}{
+    background-color: map-deep-get($colors, primary, base);
+    color: map-deep-get($colors, light, base);
+  }
+
+  // Collapsible item
+  @at-root #{el(collapsible-title)}{
+  }
+  @at-root #{el(collapsible-body)}{
+    display: none;
+    margin: 0;
+  }
+
+  @at-root #{el(collapsible-body)} #{el(link)}{
+    padding: $spacing * .5 $spacing * .5 $spacing * .5 $spacing * 3;
+
+    background-color: map-deep-get($colors, light, base);
+
+    font-weight: 400;
+    color: $text-color;
+
+    &:hover{
+      background-color: map-deep-get($colors, "grey", "lighten", "3");
+    }
+  }
+  // TODO: search for a better more bem like solution
+  @at-root #{el(collapsible-body)} #{el-w-mod(item, active)} #{el(link)}{
+    background-color: map-deep-get($colors, primary, base);
+    color: map-deep-get($colors, light, base);
+  }
+
+  // Profile
+  @at-root #{el(profile)}{
+
+  }
+
+}

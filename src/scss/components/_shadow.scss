@@ -1,0 +1,37 @@
+#{el(shadow-none)} {
+  box-shadow: none !important;
+}
+#{el(shadow-xs)} {
+  box-shadow: $shadow-xs;
+}
+#{el(shadow-s)} {
+  box-shadow: $shadow-s;
+}
+#{el(shadow-m)} {
+  box-shadow: $shadow-m;
+}
+#{el(shadow-l)} {
+  box-shadow: $shadow-l;
+}
+#{el(shadow-xl)} {
+  box-shadow: $shadow-xl;
+}
+
+#{el(shadow-img-none)} {
+  filter: drop-shadow(0 0 0 #{transparentize($shadow-color, .86)});
+}
+#{el(shadow-img-xs)} {
+  filter: drop-shadow(2px 2px 0 #{transparentize($shadow-color, .86)});
+}
+#{el(shadow-img-s)} {
+  filter: drop-shadow(4px 5px 0 #{transparentize($shadow-color, .86)});
+}
+#{el(shadow-img-m)} {
+  filter: drop-shadow(6px 10px 0 #{transparentize($shadow-color, .86)});
+}
+#{el(shadow-img-l)} {
+  filter: drop-shadow(8px 10px 1px #{transparentize($shadow-color, .86)});
+}
+#{el(shadow-img-xl)} {
+  filter: drop-shadow(16px 24px 1px #{transparentize($shadow-color, .86)});
+}

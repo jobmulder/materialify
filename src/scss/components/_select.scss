@@ -1,0 +1,92 @@
+#{el(select)}{
+  position: relative;
+  padding-bottom: $spacing;
+
+  select{
+    display: none !important;
+  }
+
+  @at-root #{el(label)}{
+    display: block;
+
+    font-size: .8em;
+  }
+  @at-root #{el(toggle)}{
+    display: block;
+    height: $spacing * 2;
+
+    border-bottom: $border;
+    box-sizing: border-box;
+
+    line-height: $spacing * 2;
+    cursor: pointer;
+
+    &:after{
+      position: absolute;
+      right: $spacing * .5;
+
+      content: '▼';
+    }
+  }
+  @at-root #{el(control)}{
+    position: absolute;
+    top: $spacing;
+    display: none;
+    height: auto;
+    min-width: 100%;
+    max-width: $spacing * 20;
+    max-height: $spacing * 30;
+    margin: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    z-index: 100;
+
+    box-shadow: $shadow-xs;
+    background-color: map-deep-get($colors, light, base);
+    border-radius: $border-radius;
+  }
+  @at-root #{el(item)}{
+    display: block;
+    padding: $spacing * .6 $spacing * 1.2;
+    overflow: hidden;
+
+    color: map-deep-get($colors, primary, base);
+    font-weight: 500;
+    line-height: normal;
+    text-transform: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    &:hover{
+      background-color: map-deep-get($colors, "grey", "lighten", "3");
+    }
+  }
+
+  @at-root %item-not-clickable {
+    color: $text-color-light;
+
+    cursor: default;
+
+    &:hover{
+      background-color: inherit;
+    }
+  }
+  @at-root #{el-w-mod(item, disabled)}{
+    @extend %item-not-clickable;
+  }
+  @at-root #{el-w-mod(item, group-label)}{
+    @extend %item-not-clickable;
+  }
+  @at-root #{el-w-mod(item, group)}{
+    padding: $spacing * .6 $spacing * 1.2 $spacing * .6 $spacing * 2;
+  }
+  @at-root #{el-w-mod(item, active)},
+  #{el-w-mod(item, active)}:hover{
+    background-color: map-deep-get($colors, primary, base);
+
+    color: map-deep-get($colors, light, base);
+  }
+
+}

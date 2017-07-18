@@ -1,0 +1,104 @@
+// Adds a pulsing transparent background
+@keyframes pulse {
+  0%, 40% {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparentize(map-deep-get($colors, primary, base), .3);
+  }
+  100% {
+    top: -$spacing * .75;
+    right: -$spacing * .75;
+    bottom: -$spacing * .75;
+    left: -$spacing * .75;
+    background: transparentize(map-deep-get($colors, primary, base), 1);
+  }
+}
+
+// Resize element from nothing to normal
+@keyframes grow {
+  0% {
+    transform: scale(0);
+    transform-origin: center;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes grow-horizontal {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes grow-vertical {
+  0% {
+    transform: scaleY(0) translateY(0px);
+    transform-origin: top;
+  }
+  100% {
+    transform: scaleY(1) translateY(0px);
+  }
+}
+
+// Resize element from normal to nothing
+@keyframes shrink {
+  0% {
+    transform: scale(1);
+    transform-origin: center;
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes shrink-horizontal {
+  0% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+@keyframes shrink-vertical {
+  0% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+
+// Fade element in or out
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+// Rotates element 90 degres from left to right
+@keyframes rotate-90-l-t-r {
+  0% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}

@@ -1,0 +1,11 @@
+#{el(profile)}{
+  position: relative;
+
+  @at-root #{el(avatar)}{
+    position: absolute;
+    margin-left: $spacing * 1.5;
+    margin-top: $spacing;
+    width: $spacing * 4;
+    height: $spacing * 4;  
+  }
+}

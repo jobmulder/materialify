@@ -1,0 +1,88 @@
+#{el(radio)}{
+  position: relative;
+
+  @at-root #{el(control)}{
+    display: none;
+    -webkit-appearance: none;
+
+    &:checked{
+      background: map-deep-get($colors, primary, base);
+    }
+  }
+  @at-root #{el(label)}{
+    margin-left: $spacing * 1.5;
+
+    &:before{
+      position: absolute;
+      left: 0;
+      top: $spacing * .15;
+      height: $spacing * 1.25;
+      width: $spacing * 1.25;
+
+      box-sizing: border-box;
+      background: transparent;
+      border: $border-size * 2 solid map-deep-get($colors, primary, base);
+      border-radius: 50%;
+
+      content: '';
+    }
+    &:after{
+      position: absolute;
+      left: 0;
+      top: $spacing * .15;
+      height: $spacing * 1.25;
+      width: $spacing * 1.25;
+
+      background: transparent;
+      border-radius: 50%;
+
+      content: '';
+      transition: transform $transition-time * .25, background $transition-time * .25;
+    }
+  }
+  @at-root #{el(control)}:checked + #{el(label)}:after{
+    background: map-deep-get($colors, primary, base);
+  }
+  @at-root #{el(label)}:active:after{
+    top: -$spacing * .75;
+    left: -$spacing * .85;
+    height: $spacing * 3;
+    width: $spacing * 3;
+
+    background: radial-gradient(map-deep-get($colors, primary, base) 25%, transparentize(map-deep-get($colors, primary, base), .5)  0%) !important;
+
+    animation: grow $transition-time * .25;
+  }
+
+
+  // Gap
+  @at-root #{mod(gap)} #{el(control)} + #{el(label)}:after{
+    left: $spacing * .25;
+    top: $spacing * .4;
+    height: $spacing * .75;
+    width: $spacing * .75;
+  }
+  @at-root #{mod(gap)} #{el(label)}:active:after{
+    top: -$spacing * .7;
+    left: -$spacing * .8;
+    height: $spacing * 3;
+    width: $spacing * 3;
+
+    background: radial-gradient(map-deep-get($colors, primary, base) 18%, transparentize(map-deep-get($colors, primary, base), .5)  0%) !important;
+  }
+
+  @at-root #{el(control)}[disabled] + #{el(label)}{
+    // Prevents the label from being active
+    pointer-events: none;
+
+    &:before{
+      border-color: $disabled-color;
+    }
+  }
+  @at-root #{el(control)}[disabled]:checked + #{el(label)}{
+    &:after{
+      background: $disabled-color;
+    }
+  }
+
+}

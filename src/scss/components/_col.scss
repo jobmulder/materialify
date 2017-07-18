@@ -1,0 +1,34 @@
+#{el(col)}{
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 100%;
+  padding-left: $row-gutter-size;
+  padding-right: $row-gutter-size;
+  box-sizing: border-box;
+
+  // Alignment
+  @at-root #{mod(top-v)}{
+    align-self: flex-start;
+  }
+  @at-root #{mod(center-v)}{
+    align-self: center;
+  }
+  @at-root #{mod(bottom-v)}{
+    align-self: flex-end;
+  }
+
+  // Column equal width compared to other columns if they have no set width
+  @at-root #{mod(auto)}{
+    width: 100%;
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+
+  // Generate columns
+  @each $media-option-name, $media-option in $media-options {
+    @media #{map-get($media-option, "query-up")} {
+      @include col-calc($media-option-name);
+    }
+  }
+}

@@ -1,0 +1,90 @@
+#{el(scrim)}{
+  position: relative;
+  overflow: hidden;
+
+  &:before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: $spacing * 5;
+
+    background: linear-gradient(to top, #{transparentize($shadow-color, .75)}, transparent);
+  }
+
+  @at-root #{el(img)}{
+    display: block;
+    width: 100%;
+  }
+  @at-root #{el(text)}{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    color: map-deep-get($colors, light, base);
+    box-sizing: border-box;
+  }
+
+
+  // Size
+  @at-root #{mod(s)}:before{
+    height: $spacing * 3;
+  }
+
+  @at-root #{mod(l)}:before{
+    height: $spacing * 7;
+  }
+
+
+  // position
+  @at-root #{mod(top)}:before{
+    top: 0;
+    bottom: auto;
+
+    background: linear-gradient(#{transparentize($shadow-color, .75)}, transparent);
+  }
+  @at-root #{mod(top)}#{mod(primary)}:before{
+      background: linear-gradient(#{transparentize(map-deep-get($colors, primary, base), .6)}, transparent);
+  }
+  @at-root #{mod(top)}#{mod(light)}:before{
+      background: linear-gradient(#{transparentize($shadow-color, .9)}, transparent);
+  }
+  @at-root #{mod(top)}#{mod(dark)}:before{
+      background: linear-gradient(#{transparentize($shadow-color, .6)}, transparent);
+  }
+  @at-root #{mod(top)} #{el(text)}{
+    top: 0;
+    bottom: auto;
+  }
+
+
+  // Colors
+  @at-root #{mod(primary)}:before{
+      background: linear-gradient(to top, #{transparentize(map-deep-get($colors, primary, base), .6)}, transparent);
+  }
+  @at-root #{mod(light)}:before{
+      background: linear-gradient(to top, #{transparentize($shadow-color, .9)}, transparent);
+  }
+  @at-root #{mod(dark)}:before{
+      background: linear-gradient(to top, #{transparentize($shadow-color, .6)}, transparent);
+  }
+
+  // Full
+  @at-root #{mod(full)}:before{
+    width: 100%;
+    height: 100%;
+
+    background: #{transparentize($shadow-color, .9)};
+  }
+  @at-root #{mod(full)}#{mod(primary)}:before{
+    background: #{transparentize(map-deep-get($colors, primary, base), .8)};
+  }
+  @at-root #{mod(full)}#{mod(light)}:before{
+    background: #{transparentize($shadow-color, .95)};
+  }
+  @at-root #{mod(full)}#{mod(dark)}:before{
+    background: #{transparentize($shadow-color, .8)};
+  }
+
+
+}

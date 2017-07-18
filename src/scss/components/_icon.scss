@@ -1,0 +1,36 @@
+#{el(icon)}{
+  display: inline-block;
+
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  vertical-align: text-bottom;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: 'liga';
+  -moz-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+
+  @at-root #{mod(xs)} {
+    font-size: 1rem !important;
+  }
+  @at-root #{mod(s)} {
+    font-size: 2rem !important;
+  }
+  @at-root #{mod(m)} {
+    font-size: 3rem !important;
+  }
+  @at-root #{mod(l)} {
+    font-size: 4rem !important;
+  }
+  @at-root #{mod(xl)} {
+    font-size: 6rem !important;
+  }
+}

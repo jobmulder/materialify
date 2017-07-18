@@ -1,0 +1,22 @@
+@mixin col-calc($size-name) {
+  $i: 1;
+  @while $i <= $row-cols {
+    $perc: unquote((100 / ($row-cols / $i)) + "%");
+    @at-root #{mod(#{$size-name}-#{$i})}{
+      width: $perc;
+      max-width: $perc;
+      flex: 0 0 $perc;
+    }
+    @at-root #{mod(offset-#{$size-name}-#{$i})}{
+      margin-left: $perc;
+    }
+    @at-root #{mod(push-#{$size-name}-#{$i})}{
+      left: $perc;
+    }
+    @at-root #{mod(pull-#{$size-name}-#{$i})}{
+      right: $perc;
+    }
+
+    $i: $i + 1;
+  }
+}

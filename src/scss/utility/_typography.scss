@@ -1,0 +1,138 @@
+#{el(text-reset)} {
+  font-family: "Roboto", sans-serif !important;
+  text-decoration: none !important;
+  font-weight: normal !important;
+  font-size: initial !important;
+  color: $text-color !important;
+}
+#{el(text-light)}{
+  color: $text-color-light !important;
+}
+
+// Weight
+#{el(text-weight-thin)} {
+  font-weight: 200 !important;
+}
+#{el(text-weight-light)} {
+  font-weight: 300 !important;
+}
+#{el(text-weight-normal)} {
+  font-weight: 400 !important;
+}
+#{el(text-weight-medium)} {
+  font-weight: 500 !important;
+}
+#{el(text-weight-bold)} {
+  font-weight: 700 !important;
+}
+
+// Flow
+#{el(text-truncate)} {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#{el(text-justify)} {
+  text-align: justify !important;
+}
+#{el(text-nowrap)} {
+  white-space: nowrap !important;
+}
+#{el(text-break-word)} {
+  word-wrap: break-word !important;
+}
+
+// Transform
+#{el(text-lowercase)} {
+  text-transform: lowercase !important;
+}
+#{el(text-uppercase)} {
+  text-transform: uppercase !important;
+}
+#{el(text-capitalize)} {
+  text-transform: capitalize !important;
+}
+#{el(text-italic)} {
+  font-style: italic !important;
+}
+
+// Size
+// Small and big are meant to change the size of a part of the text relative to the parent
+// Lead is used to make the text element it self bigger
+#{el(text-small)} {
+  font-size: .75em !important;
+}
+#{el(text-big)} {
+  font-size: 1.25em !important;
+}
+#{el(text-lead)} {
+  font-size: 1.25rem !important;
+}
+#{el(text-responsive)} {
+  $i: 0;
+  @while $i <= $text-repsonsive-interval {
+    @media only screen and (min-width : 360 + ($i * $text-repsonsive-size)) {
+      font-size: 1.25rem * (1 + (.018 * $i)) !important;
+    }
+    $i: $i + 1;
+  }
+  @media only screen and (max-width: $screen-s) {
+    font-size: 1.25rem !important;
+  }
+}
+
+// TODO: use for each
+// Alignment
+#{el(text-left)} {
+  text-align: left !important;
+}
+#{el(text-center)} {
+  text-align: center !important;
+}
+#{el(text-right)} {
+  text-align: right !important;
+}
+@media #{$query-s-up} {
+  #{el(text-s-left)} {
+    text-align: left !important;
+  }
+  #{el(text-s-center)} {
+    text-align: center !important;
+  }
+  #{el(text-s-right)} {
+    text-align: right !important;
+  }
+}
+@media #{$query-m-up} {
+  #{el(text-m-left)} {
+    text-align: left !important;
+  }
+  #{el(text-m-center)} {
+    text-align: center !important;
+  }
+  #{el(text-m-right)} {
+    text-align: right !important;
+  }
+}
+@media #{$query-l-up} {
+  #{el(text-l-left)} {
+    text-align: left !important;
+  }
+  #{el(text-l-center)} {
+    text-align: center !important;
+  }
+  #{el(text-l-right)} {
+    text-align: right !important;
+  }
+}
+@media #{$query-xl-up} {
+  #{el(text-xl-left)} {
+    text-align: left !important;
+  }
+  #{el(text-xl-center)} {
+    text-align: center !important;
+  }
+  #{el(text-xl-right)} {
+    text-align: right !important;
+  }
+}

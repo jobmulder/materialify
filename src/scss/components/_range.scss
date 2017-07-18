@@ -1,0 +1,146 @@
+@mixin thumb {
+  position: relative;
+  width: $spacing;
+  height: $spacing;
+  margin-top: -$spacing * .4;
+
+  background: map-deep-get($colors, primary, base);
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition: width $transition-time * .2, height $transition-time * .2, margin $transition-time * .2, background $transition-time * .2;
+}
+@mixin thumb-active {
+  width: $spacing * 2;
+  height: $spacing * 2;
+  margin-top: -$spacing * .9;
+
+  background: radial-gradient(map-deep-get($colors, primary, base) 25%, transparentize(map-deep-get($colors, primary, base), .5)  0%);
+}
+@mixin track {
+  height: $spacing * .2;
+
+  background: map-deep-get($colors, secondary, base);
+
+  cursor: pointer;
+}
+
+
+#{el(range)}{
+  position: relative;
+
+  @at-root #{el(label)}{
+    font-size: .8em;
+  }
+
+  // Basic
+  @at-root #{el(control)}{
+    -webkit-appearance: none;
+    background-color: transparent;
+    width: 100%;
+
+    &:focus{
+      outline: none;
+    }
+
+    // Slider button
+    &::-webkit-slider-thumb{
+      -webkit-appearance: none;
+
+      @include thumb;
+    }
+    &::-moz-range-thumb{
+      @include thumb;
+    }
+    &::-ms-thumb{
+      @include thumb;
+    }
+
+    // Track bar
+    &::-webkit-slider-runnable-track{
+      @include track;
+    }
+    &:focus::-webkit-slider-runnable-track{
+      background: map-deep-get($colors, secondary, base);
+    }
+    &::-moz-range-track{
+      @include track;
+    }
+    &::-ms-track{
+      background: transparent;
+      border-color: transparent;
+      color: transparent;
+
+      @include track;
+    }
+    &::-ms-fill-lower{
+      background: map-deep-get($colors, primary, base);
+      border: none;
+      border-radius: 0;
+      padding-bottom: $spacing * .5;
+    }
+
+    &::-ms-fill-upper{
+      background: map-deep-get($colors, secondary, base);
+      border: none;
+      border-radius: 0;
+      padding-top: $spacing * .5;
+    }
+  }
+
+  // Focus
+  @at-root #{mod(focus)} #{el(control)}:active{
+    outline: none;
+
+    &::-webkit-slider-thumb{
+      @include thumb-active;
+    }
+    &::-moz-range-thumb{
+      @include thumb-active;
+    }
+    &::-ms-thumb{
+      @include thumb-active;
+    }
+  }
+
+  // Js version with label
+  @at-root #{el(value-label)}{
+    visibility: hidden;
+    position: absolute;
+    bottom: $spacing * 2;
+    width: $spacing * 2;
+    height: $spacing * 2;
+    margin-left: -$spacing * .5;
+
+    background: map-deep-get($colors, primary, base);
+    border-radius: 50% 50% 0 50%;
+    opacity: 0;
+
+    transform: rotate(45deg);
+    transition: opacity $transition-time * .2;
+  }
+  @at-root #{el(value)}{
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    font-size: .8rem;
+    text-align: center;
+    line-height: 2rem;
+    color: map-deep-get($colors, light, base);
+
+    transform: rotate(-45deg);
+  }
+  @at-root #{mod(active)} #{el(value-label)}{
+    visibility: visible;
+
+    opacity: 1;
+  }
+  @at-root #{mod(closing)} #{el(value-label)}{
+    visibility: visible;
+
+    opacity: 0;
+  }
+
+}

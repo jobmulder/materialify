@@ -1,0 +1,50 @@
+#{el(table)}{
+  display: table;
+  width: 100%;
+
+  td, th{
+    padding: $spacing $spacing * .5;
+
+    text-align: left;
+  }
+
+  @at-root #{el(head)}{
+    border-bottom: $border;
+
+    font-weight: 500;
+  }
+
+  // Modifiers
+  @at-root #{mod(dense)} td,
+  #{mod(dense)} th{
+    padding: $spacing * .5 $spacing * .25;
+  }
+
+  @at-root #{mod(bordered)} tr{
+    border-bottom: $border;
+  }
+
+  @at-root #{mod(centered)} td,
+  #{mod(centered)} th{
+    text-align: center;
+  }
+
+  @at-root #{mod(striped)} #{el(body)} tr:nth-child(2n + 1){
+    border-bottom: $border;
+    background-color: map-deep-get($colors, "grey", "lighten", "3");
+  }
+
+  @at-root #{mod(hover)} #{el(body)} tr{
+    transition: background-color $transition-time * .5;
+
+    &:hover{
+      background-color: map-deep-get($colors, "grey", "lighten", "3");
+    }
+  }
+  @at-root #{mod(responsive)}{
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+
+  }
+}

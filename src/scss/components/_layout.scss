@@ -1,0 +1,161 @@
+$toolbar-transition: left $transition-time * .3 linear, width $transition-time * .3 linear !default;
+
+#{el(layout)}{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+
+  // Toolbar
+  @at-root #{el(toolbar)}{
+    position: relative;
+    left: 0;
+    width: 100%;
+
+    box-shadow: $shadow-xs;
+
+    z-index: 800;
+    transition: $toolbar-transition;
+  }
+
+
+  // Drawer
+  @at-root #{el(drawer)}{
+    transform: translateX(-100%);
+    transition: transform $transition-time * .3 linear;
+    z-index: 900;
+  }
+  // Drawer active, slide in
+  @at-root #{mod(active)} #{el(drawer)}{
+    transform: translateX(0%);
+  }
+  // Display shadow only when closing, active or layout is permanent otherwise it will be visible on the edge of the screen
+  @at-root #{mod(active)} #{el(drawer)},
+  #{mod(closing)} #{el(drawer)},
+  #{el-w-mod(nav, permanent)} #{el(drawer)}{
+    box-shadow: 1px 6px 10px 0 #{transparentize($shadow-color, .86)}, 1px 1px 18px 0 #{transparentize($shadow-color, .88)}, 1px 3px 5px -1px #{transparentize($shadow-color, .7)};
+  }
+
+
+  // Main
+  @at-root #{el(main)}{
+
+  }
+
+
+  // Footer
+  @at-root #{el(footer)}{
+
+  }
+
+
+  // //////
+  // Modifiers
+  // //////
+
+  // Permanent layout
+  @at-root #{el-w-mod(nav, permanent)} #{el(toolbar)}{
+    width: calc(100% - #{$drawer-width});
+    left: $drawer-width;
+  }
+  @at-root #{el-w-mod(nav, permanent)} #{el(drawer)}{
+    transform: translateX(0%);
+  }
+  @at-root #{el-w-mod(nav, permanent)} ~ #{el(main)},
+  #{el-w-mod(nav, permanent)} ~ #{el(footer)}{
+    margin-left: $drawer-width;
+
+    transition: margin-left $transition-time * .3 linear;
+  }
+  @at-root #{el-w-mod(nav, permanent)} #{el(toggle-drawer)}{
+    display: none;
+  }
+  // Make permanent drawer toggle if screen is smaller than  L (desktop)
+  @media #{map-deep-get($media-options, "l", "query-down")} {
+    @at-root #{el-w-mod(nav, permanent)} ~ #{el(main)},
+    #{el-w-mod(nav, permanent)} ~ #{el(footer)}{
+      margin-left: 0;
+    }
+    @at-root #{el-w-mod(nav, permanent)} #{el(toggle-drawer)}{
+      display: block;
+    }
+    @at-root #{el-w-mod(nav, permanent)} #{el(toolbar)}{
+      width: 100%;
+      left: 0;
+    }
+    @at-root #{mod(active)} #{el-w-mod(nav, permanent)} #{el(toolbar)}{
+      width: calc(100% - #{$drawer-width});
+      left: $drawer-width;
+    }
+    @at-root #{el-w-mod(nav, permanent)} #{el(drawer)}{
+      transform: translateX(-100%);
+    }
+    @at-root #{mod(active)} #{el-w-mod(nav, permanent)} #{el(drawer)}{
+      transform: translateX(0%);
+    }
+  }
+
+
+
+  // Permanent layout
+  @at-root #{el-w-mod(nav, clipped)} #{el(toolbar)}{
+    left: 0;
+    width: 100%;
+
+    z-index: 1000;
+  }
+  // Make permanent drawer toggle if screen is smaller than  L (desktop)
+  @media #{map-deep-get($media-options, "l", "query-down")} {
+    @at-root #{mod(active)} #{el-w-mod(nav, clipped)} #{el(toolbar)}{
+      left: 0;
+      width: 100%;
+    }
+  }
+
+
+
+  // Persistent layout
+  @at-root #{mod(active)} #{el-w-mod(nav, persistent)}:not(#{el-w-mod(nav, clipped)}) #{el(toolbar)}{
+    width: calc(100% - #{$drawer-width});
+    left: $drawer-width;
+  }
+
+
+
+  // Temporary layout
+  // Overlay that is shown when drawer is toggled
+  @at-root #{el-w-mod(nav, temporary)} #{el(overlay)}{
+    position: fixed;
+    display: none;
+    z-index: 850;
+
+    background-color: #{transparentize($shadow-color, 1)};
+
+    transition: background-color $transition-time * .3;
+  }
+  // Drawer active, show dark background
+  @at-root #{mod(active)} #{el-w-mod(nav, temporary)} #{el(overlay)}{
+    display: block;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #{transparentize($shadow-color, .75)};
+  }
+
+  // Waterfall layout
+  @at-root #{el-w-mod(nav, waterfall)} #{el(toolbar)}{
+    position: fixed;
+    top: 0;
+
+    transition: left $transition-time * .3 linear, width $transition-time * .3 linear, box-shadow $transition-time * .25;
+  }
+
+
+  // Footer stays at the bottom of the page
+  @at-root #{mod(footer-sticky)} #{el(main)}{
+    flex: 1 0 auto;
+  }
+
+
+}

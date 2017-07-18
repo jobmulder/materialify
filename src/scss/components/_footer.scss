@@ -1,0 +1,14 @@
+#{el(footer)}{
+  color: map-deep-get($colors, light, base);
+
+  @at-root #{el(primary)}{
+    padding: $spacing;
+
+    background-color: lighten(map-deep-get($colors, primary, base), 10%);
+  }
+  @at-root #{el(secondary)}{
+    padding: $spacing;
+
+    background-color: map-deep-get($colors, primary, base);
+  }
+}

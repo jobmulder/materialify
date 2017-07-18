@@ -1,0 +1,67 @@
+#{el(dropdown)}{
+  position: relative;
+  display: inline-block;
+
+  @at-root #{el(list)}{
+    position: absolute;
+    display: none;
+    height: auto;
+    min-width: 100%;
+    max-width: $spacing * 20;
+    margin: 0;
+    overflow: hidden;
+    z-index: 100;
+
+    box-shadow: $shadow-xs;
+    background-color: map-deep-get($colors, light, base);
+    border-radius: $border-radius;
+    opacity: 0;
+  }
+  @at-root #{el(item)}{
+
+    @at-root #{mod(divider)}{
+      padding: 0;
+      margin: 0;
+      border-bottom: $border;
+    }
+  }
+  @at-root #{el(link)}{
+    display: block;
+    padding: $spacing * .6 $spacing * 1.2;
+    overflow: hidden;
+
+    color: map-deep-get($colors, primary, base);
+    font-weight: 500;
+    line-height: normal;
+    text-transform: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+
+    &:hover{
+      background-color: map-deep-get($colors, "grey", "lighten", "3");
+    }
+
+  }
+
+  @at-root #{el(btn-main)}{
+    display: block;
+  }
+
+  // Active
+  @at-root #{mod(active)} #{el(list)}{
+    opacity: 1;
+  }
+  @at-root #{mod(active)} #{el(list)},
+  #{mod(closing)} #{el(list)}{
+    display: block;
+    height: auto;
+  }
+
+  @at-root #{mod(active)} #{el(list)}{
+    animation: grow-vertical $transition-time * .5, fade-in $transition-time * .5;
+  }
+  @at-root #{mod(closing)} #{el(list)}{
+    animation: shrink-vertical $transition-time * 3, fade-out $transition-time * .5;
+  }
+}

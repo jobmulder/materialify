@@ -1,0 +1,53 @@
+#{el(collection)}{
+  border: $border;
+
+
+  @at-root #{el(item)}{
+    position: relative;
+    padding: $spacing * .5 $spacing;
+    
+    &:nth-child(1n + 2){
+      border-top: $border;
+    }
+
+    @at-root #{mod(heading)}{
+      color: $text-color-light;
+      font-weight: 500;
+    }
+  }
+  @at-root #{el(link)}{
+    display: block;
+  }
+
+  @at-root #{el(media)}{
+    position: absolute;
+    left: $spacing;
+    max-width: $spacing * 3;
+    max-height: $spacing * 3;
+    border-radius: 50%;
+  }
+  @at-root #{el(primary)}{
+
+    @at-root #{mod(media)}{
+      padding-left: $spacing * 4;
+      min-height: $spacing * 3;
+    }
+  }
+  @at-root #{el(secondary)}{
+    position: absolute;
+    right: $spacing;
+    top: $spacing;
+    color: $text-color-light;
+  }
+
+  // Modifiers
+  @at-root #{mod(dense)} #{el(item)}{
+    padding-top: $spacing * .25;
+    padding-bottom: $spacing * .25;
+  }
+  @at-root #{mod(no-border)},
+  #{mod(no-border)} #{el(item)}{
+    border: none;
+  }
+
+}

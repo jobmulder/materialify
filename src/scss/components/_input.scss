@@ -1,0 +1,154 @@
+#{el(input)}{
+
+  $padding-input: $spacing;
+  $control-height: $spacing * 2;
+  $textarea-control-height: $spacing * 5;
+  @at-root %status-border {
+    left: 0;
+    width: 100%;
+  }
+  @at-root %active-label {
+    line-height: $padding-input;
+    font-size: .8em;
+  }
+
+
+
+  position: relative;
+  padding: $padding-input 0;
+
+  @at-root #{el(control)}{
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: $spacing * 2;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+
+    border: none;
+    border-bottom: $border;
+
+    z-index: 5;
+    transition: border $transition-time * .2;
+
+    &:focus{
+      outline: none;
+    }
+  }
+  @at-root #{el(label)}{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 100%;
+
+    // Combined height op padding input wrapper + input control
+    line-height: ($padding-input * 2) + $control-height;
+
+    transition: line-height $transition-time * .2, font-size $transition-time * .2, color $transition-time * .2;
+    z-index: 10;
+  }
+  @at-root #{el(border-status)}{
+    position: absolute;
+    left: 50%;
+    height: 2px;
+    width: 0;
+
+    background: map-deep-get($colors, primary, base);
+    z-index: 10;
+
+    transition: left $transition-time * .2 linear, width $transition-time * .2 linear, transform $transition-time * .2 linear;
+  }
+
+  @at-root #{el(helper)}{
+    margin: $spacing * .5 0 0 0;
+
+    font-size: .8rem;
+    color: $text-color-light;
+
+    transition: color $transition-time * .2;
+  }
+
+
+
+
+  // Modifiers
+
+  // Inline
+  @at-root #{mod(inline)}{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: $spacing;
+  }
+
+  // Texterea
+  @at-root #{mod(textarea)} #{el(control)}{
+    height: $textarea-control-height;
+
+    overflow-y: hidden;
+    resize: none;
+  }
+
+  // Date
+  @at-root #{mod(date)} #{el(label)}{
+    @extend %active-label;
+  }
+
+  // Placeholder
+  @at-root #{el(control)}[placeholder] + #{el(label)}{
+    @extend %active-label;
+  }
+
+  // Focus
+  @at-root #{mod(active)} #{el(label)}{
+    @extend %active-label;
+    color: map-deep-get($colors, primary, base);
+  }
+  @at-root #{mod(active)} #{el(border-status)}{
+    @extend %status-border;
+  }
+
+
+  // Status validation
+  // Invalid
+  @at-root #{mod(invalid)} #{el(label)}{
+    color: map-deep-get($colors, "red", "lighten", "1");
+  }
+  @at-root #{mod(invalid)} #{el(border-status)}{
+      @extend %status-border;
+      background: map-deep-get($colors, "red", "lighten", "1");
+  }
+  @at-root #{mod(invalid)} #{el(helper)}{
+    color: map-deep-get($colors, "red", "lighten", "1");
+  }
+  @at-root #{mod(invalid)} #{el(helper)}:after{
+    position: relative;
+    content: attr(data-invalid);
+  }
+  // Valid
+  @at-root #{mod(valid)} #{el(label)}{
+    color: map-deep-get($colors, "green", "base");
+  }
+  @at-root #{mod(valid)} #{el(border-status)}{
+      @extend %status-border;
+      background: map-deep-get($colors, "green", "base");
+  }
+  @at-root #{mod(valid)} #{el(helper)}:after{
+    position: relative;
+
+    content: attr(data-valid);
+    color: map-deep-get($colors, "green", "base");
+  }
+
+
+  // Disabled
+  @at-root #{el(control)}[disabled]{
+    background-color: transparent;
+    border-bottom: $border-size dashed $border-color;
+  }
+  @at-root #{el(control)}[disabled] + #{el(label)}{
+    color: $text-color-light;
+  }
+
+}

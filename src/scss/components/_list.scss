@@ -1,0 +1,40 @@
+ul, ol{
+  padding-left: 0;
+  margin: $spacing 0;
+  list-style-type: none;
+}
+
+#{el(list)}{
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  // List types
+  @at-root #{mod(horizontal)}{
+    display: flex;
+  }
+  // Add offset except for the first item
+  // TODO: not sure if item modifier should be required, to use the li element for selection is against bem, but makes for a lot better DOM
+  @at-root #{mod(horizontal)} #{el(item)}:nth-child(1n + 2) {
+    margin-left: $spacing;
+  }
+
+
+  // Orderd list counting types
+  @at-root #{mod(disc)} {
+    padding-left: $spacing * 2;
+    list-style-type: disc;
+  }
+  @at-root #{mod(lower-latin)} {
+    padding-left: $spacing * 2;
+    list-style-type: lower-latin;
+  }
+  @at-root #{mod(upper-latin)} {
+    padding-left: $spacing * 2;
+    list-style-type: upper-latin;
+  }
+  @at-root #{mod(decimal)} {
+    padding-left: $spacing * 2;
+    list-style-type: decimal;
+  }
+}

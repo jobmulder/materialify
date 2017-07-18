@@ -1,0 +1,14 @@
+#{el(img)} {
+
+  @at-root #{mod(responsive)} {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+  @at-root #{mod(rounded)} {
+    border-radius: $spacing * .5;
+  }
+  @at-root #{mod(circle)} {
+    border-radius: 50%;
+  }
+}

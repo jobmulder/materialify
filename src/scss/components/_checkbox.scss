@@ -1,0 +1,120 @@
+#{el(checkbox)}{
+  position: relative;
+
+  @at-root #{el(control)}{
+    display: none;
+    -webkit-appearance: none;
+
+    &:checked{
+      background: map-deep-get($colors, primary, base);
+    }
+  }
+  @at-root #{el(label)}{
+    margin-left: $spacing * 1.5;
+
+    &:before{
+      position: absolute;
+      left: 0;
+      top: 2px;
+      height: $spacing * 1.25;
+      width: $spacing * 1.25;
+
+      box-sizing: border-box;
+      background: transparent;
+      border: $border-size * 2 solid map-deep-get($colors, primary, base);
+      border-radius: $border-radius;
+
+      content: '';
+    }
+    &:after{
+      position: absolute;
+      left: 0;
+      top: 2px;
+      height: $spacing * 1.25;
+      width: $spacing * 1.25;
+
+      background: transparent;
+      border-radius: $border-radius;
+
+      content: '';
+      transition: transform $transition-time * .25, background $transition-time * .25;
+    }
+  }
+  @at-root #{el(control)}:checked + #{el(label)}{
+    &:before{
+      top: $spacing * .25;
+      left: $spacing * .4;
+      width: $spacing * .5;
+      height: $spacing * .8;
+
+      border-top: none;
+      border-right: $border-size * 2 solid map-deep-get($colors, light, base);
+      border-bottom: $border-size * 2 solid map-deep-get($colors, light, base);
+      border-left: none;
+
+      transform: rotate(45deg);
+      z-index: 10;
+    }
+
+    &:after{
+      background: map-deep-get($colors, primary, base);
+    }
+  }
+  @at-root #{el(control)} + #{el(label)}:active{
+    &:before{
+      top: 2px;
+      left: 0;
+      height: $spacing * 1.25;
+      width: $spacing * 1.25;
+
+      border: none;
+      background-color: map-deep-get($colors, primary, base);
+
+      transform: rotate(0);
+    }
+
+    &:after{
+      top: -$spacing * .8;
+      left: -$spacing * .85;
+      height: $spacing * 3;
+      width: $spacing * 3;
+
+      border-radius: 50%;
+      background: radial-gradient(map-deep-get($colors, primary, base) 25%, transparentize(map-deep-get($colors, primary, base), .5)  0%) !important;
+
+      animation: grow $transition-time * .25;
+    }
+  }
+
+  @at-root  #{el(control)}[disabled] + #{el(label)}{
+    // Prevents the label from being active
+    pointer-events: none;
+
+    &:before{
+      border: $border-size * 2 solid $disabled-color;
+      background: transparent;
+      transform: none;
+    }
+    &:after{
+      display: none;
+    }
+  }
+  @at-root  #{el(control)}[disabled]:checked + #{el(label)}{
+    &:before{
+      border-top: none;
+      border-left: none;
+      border-color: map-deep-get($colors, light, base);
+      transform: rotate(45deg);
+    }
+    &:after{
+      display: inherit;
+      background: $disabled-color;
+    }
+    &:active{
+      &:before{
+        transform: rotate(0);
+      }
+    }
+  }
+
+}

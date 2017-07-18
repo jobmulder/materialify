@@ -1,0 +1,85 @@
+@each $media-option-name, $media-option in $media-options {
+  @media #{map-get($media-option, "query-up")} {
+
+    @if $media-option-name != "xs" {
+      $media-option-name: "-#{$media-option-name}";
+    } @else {
+      $media-option-name: "";
+    }
+
+    #{el(flex#{$media-option-name})} {
+      display: flex;
+
+
+      // ====================
+      // Container options
+      // ====================
+      // Flex direction
+      @each $prop-val, $abbr in ("row": "row", "row-reverse": "row-rev", "column": "col", "column-reverse": "col-rev") {
+
+        @at-root #{mod(dir-#{$abbr})}{
+          flex-direction: #{$prop-val};
+        }
+
+      }
+
+      // Flex wrap
+      @each $prop-val, $abbr in ("nowrap": "nowrap", "wrap": "wrap", "wrap-reverse": "wrap-rev") {
+
+        @at-root #{mod(#{$abbr})}{
+          flex-wrap: #{$prop-val};
+        }
+
+      }
+
+      // Justify content
+      @each $prop-val, $abbr in ("flex-start": "start", "flex-end": "end", "center": "center", "space-between": "between", "space-around": "around") {
+
+        @at-root #{mod(justify-#{$abbr})}{
+          justify-content: #{$prop-val};
+        }
+
+      }
+
+      // Align items
+      @each $prop-val, $abbr in ("flex-start": "start", "flex-end": "end", "center": "center", "baseline": "baseline", "stretch": "stretch") {
+
+        @at-root #{mod(items-#{$abbr})}{
+          align-items: #{$prop-val};
+        }
+
+      }
+
+      // Align content
+      @each $prop-val, $abbr in ("flex-start": "start", "flex-end": "end", "center": "center", "space-between": "between", "space-around": "around", "stretch": "stretch") {
+
+        @at-root #{mod(content-#{$abbr})}{
+          align-content: #{$prop-val};
+        }
+
+      }
+
+      // ====================
+      // Item options
+      // ====================
+      // Order
+      @each $prop-val, $abbr in ("-1": "first", "1": "last", "0": "unordered") {
+
+        @at-root #{el(order-#{$abbr})}{
+          order: #{$prop-val};
+        }
+
+      }
+
+      // Align self
+      @each $prop-val, $abbr in ("auto": "auto", "flex-start": "start", "flex-end": "end", "center": "center", "baseline": "baseline", "stretch": "stretch") {
+
+        @at-root #{el(align-#{$abbr})}{
+          align-self: #{$prop-val};
+        }
+
+      }
+
+    }
+  }
+}

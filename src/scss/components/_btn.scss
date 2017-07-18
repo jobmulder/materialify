@@ -1,0 +1,141 @@
+#{el(btn)}{
+  display: inline-block;
+  max-width: 100%;
+  padding: $spacing * .5 $spacing * 1.10;
+  overflow: hidden;
+
+  border: none;
+  border-radius: $border-radius;
+  box-sizing: border-box;
+  box-shadow: $shadow-xs;
+  outline: none;
+  background-color: map-deep-get($colors, secondary, base);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 500;
+  color: map-deep-get($colors, light, base);
+
+  transition: background-color $transition-time;
+  cursor: pointer;
+
+  &:focus{
+    background-color: darken(map-deep-get($colors, secondary, base), 5);
+  }
+  &:hover{
+    background-color: lighten(map-deep-get($colors, secondary, base), 5);
+  }
+
+  // Types
+  // No background only text
+  @at-root #{mod(flat)}{
+    background: none;
+    box-shadow: none;
+    color: $text-color;
+
+    &:focus,
+    &:hover{
+      background-color: transparent;
+    }
+  }
+  // Full with
+  @at-root #{mod(full)}{
+    width: 100%;
+  }
+  // Round button with icon only
+  @at-root #{mod(icon)}{
+    border-radius: 50%;
+    padding: $spacing * .5;
+  }
+  @at-root #{mod(icon)} #{el(icon)}{
+    vertical-align: bottom;
+  }
+  // Used to position button between to ereas
+  @at-root #{mod(float-top)}{
+    position: absolute;
+    top: -50%;
+  }
+  @at-root #{mod(float-right)}{
+    position: absolute;
+    right: -50%;
+  }
+  @at-root #{mod(float-bottom)}{
+    position: absolute;
+    bottom: -50%;
+  }
+  @at-root #{mod(float-left)}{
+    position: absolute;
+    left: -50%;
+  }
+  //Adds a pulsing transparent background around the button
+  @at-root #{mod(pulse)}{
+    position: relative;
+    overflow: visible;
+
+    &:before{
+      content: '';
+      position: absolute;
+      overflow: visible;
+      animation: pulse $transition-time infinite;
+      z-index: -1;
+      border-radius: $border-radius;
+    }
+  }
+  @at-root #{mod(icon)}#{mod(pulse)}{
+    &:before{
+      border-radius: 50%;
+    }
+  }
+
+
+  // Sizes
+  @at-root #{mod(s)}{
+    font-weight: 400;
+    font-size: .85rem;
+    padding: $spacing * .25 $spacing * .6;
+  }
+  @at-root #{mod(s)} #{el(icon)}{
+    font-size: 1.2rem;
+  }
+  @at-root #{mod(l)}{
+    font-size: 1.15rem;
+    padding: $spacing $spacing * 1.5;
+  }
+  @at-root #{mod(icon)}#{mod(s)}{
+    padding: $spacing * .5;
+
+    line-height: .9;
+  }
+  @at-root #{mod(icon)}#{mod(l)}{
+    padding: $spacing;
+  }
+  @at-root #{mod(float)}#{mod(l)}{
+    padding: $spacing * 1.5;
+  }
+
+
+  // States
+  @at-root #{mod(disabled)},
+  &[disabled]{
+    pointer-events: none;
+    box-shadow: none;
+    background-color: map-deep-get($colors, "grey", "lighten", "3");
+    color: map-deep-get($colors, "grey", "darken", "1");
+    cursor: default;
+
+    &:hover,
+    &:focus{
+      background-color: map-deep-get($colors, "grey", "lighten", "3");
+      color: map-deep-get($colors, "grey", "darken", "1");
+    }
+  }
+  @at-root #{mod(disabled)}#{mod(flat)},
+  #{mod(flat)}[disabled]{
+    background-color: transparent;
+    color: map-deep-get($colors, "grey", "base");
+  }
+
+}
